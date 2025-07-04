@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uma Surpresa...</title>
+  <style>
+    /* Estilos gerais e para centralizar o conteúdo */
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden; /* Evita barras de rolagem */
+      transition: background-color 1s; /* Suaviza a cor de fundo inicial */
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100%;
+      text-align: center;
+    }
+
+    /* Estilo do botão inicial */
+    #trollButton {
+      padding: 20px 40px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      background-color: #fff;
+      border: 3px solid #333;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    #trollButton:hover {
+      transform: scale(1.1);
+    }
+
+    /* Estilo da mensagem de "troll" */
+    #trollMessage {
+      font-size: 5vw; /* Tamanho da fonte responsivo */
+      font-weight: bold;
+      color: white;
+      text-shadow: 3px 3px 6px #000000;
+    }
+
+    /* Classe para esconder elementos */
+    .hidden {
+      display: none;
+    }
+
+    /* Animação de fundo RGB */
+    @keyframes animacao-rgb {
+      0%   { background-color: hsl(0, 100%, 50%); }   /* Vermelho */
+      16%  { background-color: hsl(60, 100%, 50%); }  /* Amarelo */
+      33%  { background-color: hsl(120, 100%, 50%); } /* Verde */
+      50%  { background-color: hsl(180, 100%, 50%); } /* Ciano */
+      66%  { background-color: hsl(240, 100%, 50%); } /* Azul */
+      83%  { background-color: hsl(300, 100%, 50%); } /* Magenta */
+      100% { background-color: hsl(0, 100%, 50%); }   /* Volta ao Vermelho */
+    }
+
+    /* Classe que aplica a animação */
+    .rgb-background {
+      animation: animacao-rgb 8s infinite linear;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <button id="trollButton">Clique aqui!</button>
+    <h1 id="trollMessage" class="hidden">voce foi trollado!</h1>
+  </div>
+
+  <script>
+    // Seleciona os elementos da página
+    const trollButton = document.getElementById('trollButton');
+    const trollMessage = document.getElementById('trollMessage');
+    const body = document.body;
+
+    // Adiciona um "ouvinte" para o evento de clique no botão
+    trollButton.addEventListener('click', () => {
+      // 1. Adiciona a classe que ativa a animação de fundo no body
+      body.classList.add('rgb-background');
+
+      // 2. Mostra a mensagem de "trollado"
+      trollMessage.classList.remove('hidden');
+
+      // 3. Esconde o botão para que ele não possa ser clicado novamente
+      trollButton.classList.add('hidden');
+    });
+  </script>
+
+</body>
+</html>
